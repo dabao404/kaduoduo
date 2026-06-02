@@ -28,4 +28,4 @@ jobs:
           gradle-version: 8.11.1
 
       - name: Build debug APK
-        gradle clean assembleDebug
+        run: gradle clean assembleDebug
