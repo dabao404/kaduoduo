@@ -1,0 +1,33 @@
+# Gradle / Android
+.gradle/
+build/
+*/build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Kotlin / generated
+*.kotlin_module
+app/schemas/
+
+# Signing / secrets
+*.jks
+*.keystore
+keystore.properties
+google-services.json
+secrets.properties
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Codex workspace scratch/output directories
+work/
+outputs/
