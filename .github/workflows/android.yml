@@ -28,4 +28,4 @@ jobs:
           gradle-version: 8.11.1
 
       - name: Build debug APK
-        run: gradle clean assembleDebug
+        run: chmod +x ./gradlew && ./gradlew clean assembleDebug
