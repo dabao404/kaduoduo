@@ -28,4 +28,4 @@ jobs:
           gradle-version: 8.11.1
 
       - name: Build debug APK
-        run: chmod +x ./gradlew && ./gradlew clean assembleDebug
+        run: gradle -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true clean assembleDebug
