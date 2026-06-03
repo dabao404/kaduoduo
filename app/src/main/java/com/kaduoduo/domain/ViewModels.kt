@@ -106,8 +106,8 @@ class AddCardViewModel(
                 customBankName = state.customBankName.trim().ifBlank { null },
                 cardName = cardName,
                 issueDateEpochDay = issueDate.toEpochDay(),
-                billingDay = billingDay,
-                repaymentDay = repaymentDay,
+                billingDay = billingDay!!,
+                repaymentDay = repaymentDay!!,
                 fixedLimitFen = fixedLimitFen,
                 temporaryLimitFen = temporaryLimitFen,
                 temporaryLimitExpireEpochDay = temporaryExpire
