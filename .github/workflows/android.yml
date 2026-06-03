@@ -19,18 +19,14 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Download Android cmdline-tools
-        run: |
-          mkdir -p ${{ runner.temp }}/sdk/cmdline-tools
-          cd ${{ runner.temp }}
-          wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-          unzip -q commandlinetools-linux-11076708_latest.zip -d sdk/cmdline-tools
-          mv sdk/cmdline-tools/cmdline-tools sdk/cmdline-tools/latest
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
 
-      - name: Install Android SDK platform
+      - name: Accept licenses & install SDK platform
         run: |
-          SDK=${{ runner.temp }}/sdk
-          yes | $SDK/cmdline-tools/latest/bin/sdkmanager --sdk_root=$SDK "platforms;android-36"
+          SDK=$ANDROID_HOME
+          yes | $SDK/cmdline-tools/latest/bin/sdkmanager --sdk_root=$SDK --licenses
+          $SDK/cmdline-tools/latest/bin/sdkmanager --sdk_root=$SDK "platforms;android-36"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -39,5 +35,3 @@ jobs:
 
       - name: Build debug APK
         run: gradle -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true clean assembleDebug
-        env:
-          ANDROID_HOME: ${{ runner.temp }}/sdk
